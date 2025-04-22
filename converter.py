@@ -5,8 +5,8 @@ import pandas as pd
 class EInvoiceConverter:
     def __init__(self, pdf_paths):
         self.pdf_paths = pdf_paths
-        self.columns =["Sira No", "Mal Hizmet", "Miktar", "Iskonto Orani", "Iskonto Tutari", "KDV Orani", "KDV Tutari", "Diğer Vergiler", "Hizmet Tutari"]
-        self.alternative_columns  = [["Sira No", "Sira"], ["Mal Hizmet", "Hizmet Açıklamasi", "Açiklama" ], ["Miktar","Mktr"], ["Iskonto Orani", "Isknt %"], "Iskonto Tutari", ["KDV Orani", "KDV %"], "KDV Tutari", "Diğer Vergiler", ["Hizmet Tutari", "Net Tutar"]]
+        self.columns =["Sira No", "Mal Hizmet", "Miktar", "Birim Fiyat" ,"Iskonto Orani", "Iskonto Tutari", "KDV Orani", "KDV Tutari", "Diğer Vergiler", "Hizmet Tutari"]
+        self.alternative_columns  = [["Sira No", "Sira"], ["Mal Hizmet", "Hizmet Açıklamasi", "Açiklama" ], ["Miktar","Mktr"], ["Birim Fiyat", "Birim"], ["Iskonto Orani", "Isknt %"], "Iskonto Tutari", ["KDV Orani", "KDV %"], "KDV Tutari", "Diğer Vergiler", ["Hizmet Tutari", "Net Tutar"]]
         self.data = {col: [] for col in self.columns}
         self.structured_table = []
         self.structured_nested_list = []
@@ -80,9 +80,20 @@ class EInvoiceConverter:
                                     self.data[col[0]].append(structured_table[b][a][j])
                                 break
                         if found == True:
-                            break    
+                            break 
 
-                elif z == 5:
+                elif z == 4:
+                    for i in range(0, len(alternative_columns[z])):
+                        for j in range(0,len(structured_table[b][0])):
+                            if alternative_columns[z][i] in structured_table[b][0][j]:
+                                found = True
+                                for a in range(1,len(structured_table[b])):
+                                    self.data[col[0]].append(structured_table[b][a][j])
+                                break
+                        if found == True:
+                            break 
+
+                elif z == 6:
                     for i in range(0, len(alternative_columns[z])):
                         for j in range(0,len(structured_table[b][0])):
                             if alternative_columns[z][i] in structured_table[b][0][j]:
@@ -93,7 +104,7 @@ class EInvoiceConverter:
                         if found == True:
                             break    
 
-                elif z == 8:
+                elif z == 9:
                     for i in range(0, len(alternative_columns[z])):
                         for j in range(0,len(structured_table[b][0])):
                             if alternative_columns[z][i] in structured_table[b][0][j]:
@@ -112,7 +123,7 @@ class EInvoiceConverter:
                             break
                 if found == False:
                     for _ in range(1, len(structured_table[b])):
-                        if z == 1 or z == 2 or z == 3 or z ==5 or z == 8:
+                        if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
                             self.data[col[0]].append(" ")
                         else:
                             self.data[col].append(" ")    

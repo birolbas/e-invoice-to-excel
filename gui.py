@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import filedialog, messagebox
 from tkinter.simpledialog import askstring
-
 import os 
 from converter import EInvoiceConverter
  
@@ -30,7 +29,6 @@ def select_folder():
         converter = EInvoiceConverter(pdf_paths=pdf_paths)    
     else:
         selected_label.config(text="PDF dosyası bulunamadı.")
-        converter = EInvoiceConverter(pdf_paths=pdf_paths)    
 
 def create_excel():
     global df 
