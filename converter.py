@@ -39,7 +39,7 @@ class EInvoiceConverter:
             z = 0
             for col in alternative_columns:
                 found = False
-                if z == 0:
+                if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
                     for i in range(0, len(alternative_columns[z])):
                         for j in range(0,len(structured_table[b][0])):
                             if alternative_columns[z][i] in structured_table[b][0][j]:
@@ -50,70 +50,6 @@ class EInvoiceConverter:
                         if found == True:
                             break
 
-                elif z == 1:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break
-                elif z == 2:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break
-
-                elif z == 3:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break 
-
-                elif z == 4:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break 
-
-                elif z == 6:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break    
-
-                elif z == 9:
-                    for i in range(0, len(alternative_columns[z])):
-                        for j in range(0,len(structured_table[b][0])):
-                            if alternative_columns[z][i] in structured_table[b][0][j]:
-                                found = True
-                                for a in range(1,len(structured_table[b])):
-                                    self.data[col[0]].append(structured_table[b][a][j])
-                                break
-                        if found == True:
-                            break      
                 else:
                     for i in range(0, len(structured_table[b][0])):
                         if col in structured_table[b][0][i]:
