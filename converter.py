@@ -38,7 +38,7 @@ class EInvoiceConverter:
             z = 0
             for col in alternative_columns:
                 found = False
-                if alternative_columns[z]:
+                if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
                     for i in range(0, len(alternative_columns[z])):
                         for j in range(0,len(structured_table[b][0])):
                             if alternative_columns[z][i] in structured_table[b][0][j]:
@@ -56,9 +56,10 @@ class EInvoiceConverter:
                             for j in range(1,len(structured_table[b])):
                                 self.data[col].append(structured_table[b][j][i])
                             break
+
                 if found == False:
                     for _ in range(1, len(structured_table[b])):
-                        if alternative_columns[z]:
+                        if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
                             self.data[col[0]].append(" ")
                         else:
                             self.data[col].append(" ")    
