@@ -12,7 +12,6 @@ class EInvoiceConverter:
         self.structured_nested_list = []
 
     def set_structure(self):
-        nested_list = []
         for p in range(0, len(self.pdf_paths)):
             with pdfplumber.open(self.pdf_paths[p]) as pdf:            
                 for page in pdf.pages:
@@ -39,7 +38,7 @@ class EInvoiceConverter:
             z = 0
             for col in alternative_columns:
                 found = False
-                if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
+                if alternative_columns[z]:
                     for i in range(0, len(alternative_columns[z])):
                         for j in range(0,len(structured_table[b][0])):
                             if alternative_columns[z][i] in structured_table[b][0][j]:
@@ -59,7 +58,7 @@ class EInvoiceConverter:
                             break
                 if found == False:
                     for _ in range(1, len(structured_table[b])):
-                        if z == 0 or z == 1 or z == 2 or z == 3 or z == 4 or z == 6 or z == 9:
+                        if alternative_columns[z]:
                             self.data[col[0]].append(" ")
                         else:
                             self.data[col].append(" ")    
