@@ -18,7 +18,6 @@ E-Fatura Excel Çevirici, seçtiğiniz klasördeki tüm PDF formatındaki e-fatu
 ❗Uyarı
 Uygulama yalnızca belirli formatta hazırlanmış e-faturaları destekler.
 Eğer fatura şablonu farklıysa, veri çekme işlemi doğru çalışmayabilir.
-Dosya isimlerinde Türkçe karakter veya boşluk kullanmamaya özen gösterin.
 ❗
 
 
